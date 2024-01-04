@@ -7,7 +7,8 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    return redirect()->route('product.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -19,5 +20,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
-Route::get('/', [ProductController::class, 'index'])->name('product.index');
+Route::controller(ProductController::class)->group(function() {
+    Route::name('product.')->group(function() {
+        
+        Route::get('/', 'index')->name('index');
+        Route::get('/product/{id}', 'show')->name('show');
+    });
+});

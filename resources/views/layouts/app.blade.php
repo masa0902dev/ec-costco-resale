@@ -25,7 +25,9 @@
     <!-- css -->
     <!--<link rel="stylesheet" href="../css/destyle.css">-->
     <link rel="stylesheet" href="{{ asset('css/destyle.css') }}">
-    <link rel="preload" href="{{ asset('images/top.jpg') }}" as="image">
+    @if (request()->url() === '/')
+        <link rel="preload" href="{{ asset('images/top.jpg') }}" as="image">
+    @endif
     @vite('resources/sass/app.scss')
     <!--<link rel="stylesheet" href="../css/common.css" media="print" onload="this.media='all'; this.onload=null;">-->
     <!--<link rel="stylesheet" href="../css/index.css" media="print" onload="this.media='all'; this.onload=null;">-->
@@ -53,5 +55,11 @@
     </header>
     
      @yield('content')
+     
+    <footer>
+        <div class="footer-title-wrapper">
+            <a href="{{ route('product.index') }}">{{ config('app.name', 'Laravel') }}</a>
+        </div>
+    </footer>
 </body>
 </html>

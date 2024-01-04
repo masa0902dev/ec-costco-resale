@@ -5,8 +5,8 @@
 商品一覧
 @endsection
 
-@section('content')
 
+@section('content')
     <div class="jumbotron top-img">
         <div>
             <p class="text-center text-white top-img-text">{{ config('app.name', 'Laravel') }}</p>
@@ -18,10 +18,10 @@
             All Products
         </div>
 
-        <!-- 1ページに30個まで表示ペジネーション -->
+        <!-- 1ページ30個まで表示ペジネーション -->
         <div class="row">
             @foreach ($products as $product)
-            <a href="#" class="col-lg-4 col-md-6">
+            <a href="{{ route('product.show', $product->id) }}" class="col-lg-4 col-md-6">
                 <div class="card">
                     <img src="{{ asset($product->image) }}" class="card-img" loading="lazy">
                     <div class="card-body">
@@ -33,11 +33,4 @@
             @endforeach
         </div>
     </div>
-
-    <footer>
-        <div class="footer-title-wrapper">
-            <p>{{ config('app.name', 'Laravel') }}</p>
-        </div>
-    </footer>
-
 @endsection
