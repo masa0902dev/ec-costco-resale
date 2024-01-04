@@ -2,21 +2,26 @@
 
 
 @section('title')
-商品一覧
+商品検索
 @endsection
 
+<head>
+    @vite('resources/sass/search.index.scss')
+</head>
 
 @section('content')
-    <div class="jumbotron top-img">
-        <div>
-            <p class="text-center text-white top-img-text">{{ config('app.name', 'Laravel') }}</p>
-        </div>
+    <div class="container">
+        <form method="POST" action="{{ route('search.result') }}">
+            @csrf
+            <div class="search-wrapper">
+                <input type="text" name="search_input" placeholder="商品名で検索" value="{{ old('search_input') }}">
+                <button type="submit" class="btn" aria-hidden="true">検索</button>
+            </div>
+        </form>
     </div>
 
+
     <div class="container">
-        <div class="top__title text-center">
-            All Products
-        </div>
 
         <div class='paginate'>
             {{ $products->links() }}
@@ -38,5 +43,9 @@
         <div class='paginate'>
             {{ $products->links() }}
         </div>
+    </div>
+    
+    <div class="back-to-home">
+        <a href="{{ route('product.index') }}">一覧に戻る</a>
     </div>
 @endsection

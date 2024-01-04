@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\LineItem;
-
 class Cart extends Model
 {
     use HasFactory;
     
-    public function line_items()
+    public function products()
     {
-        return $this->hasMany(LineItem::class);
+        return $this->belongsToMany(Product::class, 'line_items')
+            ->withPivot(['id', 'quantity']);
     }
 }

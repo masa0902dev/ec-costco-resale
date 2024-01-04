@@ -23,17 +23,12 @@
     <meta property="og:locale" content="ja_JP">
 
     <!-- css -->
-    <!--<link rel="stylesheet" href="../css/destyle.css">-->
     <link rel="stylesheet" href="{{ asset('css/destyle.css') }}">
     @if (request()->url() === '/')
         <link rel="preload" href="{{ asset('images/top.jpg') }}" as="image">
     @endif
     @vite('resources/sass/app.scss')
-    <!--<link rel="stylesheet" href="../css/common.css" media="print" onload="this.media='all'; this.onload=null;">-->
-    <!--<link rel="stylesheet" href="../css/index.css" media="print" onload="this.media='all'; this.onload=null;">-->
     <!-- js -->
-    <!--<script src="../js/common.js" defer></script>-->
-    <!--<script src="../js/index.js" defer></script>-->
     <script src="https://kit.fontawesome.com/f4ecd71f58.js" crossorigin="anonymous" defer></script>
 </head>
 
@@ -45,10 +40,10 @@
             </div>
             <div class="right-wrapper">
                 <div class="cart-btn">
-                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('cart.index') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
                 <div class="search-btn">
-                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="{{ route('search.index') }}"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </div>
             </div>
         </nav>
